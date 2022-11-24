@@ -4,7 +4,11 @@
     <h2 class="auth__heading"><?php echo $titulo; ?></h2>
     <p class="auth__texto">Inicia Sesion en DevWebCamp</p>
 
-    <form class="formulario">
+    <?php
+        require_once __DIR__ . '/../templates/alertas.php';
+    ?>
+
+    <form class="formulario" method="POST">
 
         <div class="formulario__campo">
 
