@@ -65,13 +65,16 @@
             const resultado = listadoHorasArray.filter( li => !horasTomadas.includes(li.dataset.horaId) );
             resultado.forEach( li => li.classList.remove('horas__hora--deshabilitada') );
 
-            const horasDisponibles = resultado;
+            const horasDisponibles = document.querySelectorAll('#horas li:not(.horas__hora--deshabilitada)');
             horasDisponibles.forEach( hora => hora.addEventListener('click', seleccionarHora) );
             
         }
 
         function seleccionarHora(e) {
 
+            if(e.target.classList.contains('horas__hora--deshabilitada')){
+                return;
+           }
             // Deshabilitar la hora previa, si hay un nuevo click
             const horaPrevia = document.querySelector('.horas__hora--seleccionada');
             if( horaPrevia ) {
@@ -85,7 +88,7 @@
             inputHiddenHora.value = e.target.dataset.horaId;
             
             // Llenar el campo oculto de día
-            inputHiddenDia.value = document.querySelector('[name="dia"]:checked');
+            inputHiddenDia.value = document.querySelector('[name="dia"]:checked').value;
         }
 
 
