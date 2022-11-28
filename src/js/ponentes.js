@@ -10,11 +10,27 @@
         const listadoPonentes = document.querySelector('#listado-ponentes');
         const ponenteHidden = document.querySelector('[name="ponente_id"]');
 
-        obtenerPonenetes();
-
+        obtenerPonentes();
         ponentesInput.addEventListener('input', buscarPonentes);
 
-        async function obtenerPonenetes() {
+        if( ponenteHidden.value ) {
+            ( async () => {
+
+                const ponente = await obtenerPonente(ponenteHidden.value);
+                const { nombre, apellido } = ponente;
+
+
+                // Insertar en el HTML
+                const ponenteDOM = document.createElement('LI');
+                ponenteDOM.classList.add('listado-ponentes__ponente', 'listado-ponentes__ponente--seleccionado');
+                ponenteDOM.textContent = `${nombre} ${apellido}`;
+
+                listadoPonentes.appendChild(ponenteDOM);
+
+            })();
+        }
+
+        async function obtenerPonentes() {
 
             const url = `http://localhost:3000/api/ponentes`;
 
@@ -22,6 +38,16 @@
             const resultado = await respuesta.json();
             
             formatearPonentes(resultado);
+
+        }
+
+        async function obtenerPonente(id) {
+
+            const url = `/api/ponente?id=${id}`;
+            const respuesta = await fetch(url);
+            const resultado = respuesta.json();
+
+            return resultado;
 
         }
 
