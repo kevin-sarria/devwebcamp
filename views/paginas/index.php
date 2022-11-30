@@ -4,23 +4,23 @@ include_once __DIR__ . '/conferencias.php';
 
 <section class="resumen">
 
-    <div class="resumen__grid">
+    <div class="resumen__grid" <?php aos_animacion(); ?>>
         <div class="resumen__bloque">
             <p class="resumen__texto resumen__texto--numero"><?php echo $ponentes_total; ?></p>
             <p class="resumen__texto">Speakers</p>
         </div>
 
-        <div class="resumen__bloque">
+        <div class="resumen__bloque" <?php aos_animacion(); ?>>
             <p class="resumen__texto resumen__texto--numero"><?php echo $conferencias_total; ?></p>
             <p class="resumen__texto">Conferencias</p>
         </div>
 
-        <div class="resumen__bloque">
+        <div class="resumen__bloque" <?php aos_animacion(); ?>>
             <p class="resumen__texto resumen__texto--numero"><?php echo $workshops_total; ?></p>
             <p class="resumen__texto">WorkShops</p>
         </div>
 
-        <div class="resumen__bloque">
+        <div class="resumen__bloque" <?php aos_animacion(); ?>>
             <p class="resumen__texto resumen__texto--numero">500</p>
             <p class="resumen__texto">Asistentes</p>
         </div>
@@ -35,7 +35,7 @@ include_once __DIR__ . '/conferencias.php';
     <div class="speakers__grid">
         <?php foreach ($ponentes as $ponente) : ?>
 
-            <div class="speaker">
+            <div class="speaker" <?php aos_animacion(); ?>>
                 <picture>
                     <source srcset="<?php echo $_ENV['HOST'] . '/img/speakers/' . $ponente->imagen; ?>.webp" type="image/webp">
 
@@ -108,4 +108,35 @@ include_once __DIR__ . '/conferencias.php';
     </div>
 </section>
 
-<div id="mapa" class="mapa"></div>
+<div id="mapa" class="mapa" <?php aos_animacion(); ?>></div>
+
+<section class="boletos">
+    <h2 class="boletos__heading">Boletos y Precios</h2>
+    <p class="boletos__descripcion">Precios para DevWebCamp</p>
+
+    <div class="boletos__grid">
+
+        <div class="boleto boleto--presencial" <?php aos_animacion(); ?>>
+            <h4 class="boleto__logo">&#60;DevWebCamp /></h4>
+            <p class="boleto__plan">Presencial</p>
+            <p class="boleto__precio">$199</p>
+        </div>
+
+        <div class="boleto boleto--virtual" <?php aos_animacion(); ?>>
+            <h4 class="boleto__logo">&#60;DevWebCamp /></h4>
+            <p class="boleto__plan">Virtual</p>
+            <p class="boleto__precio">$49</p>
+        </div>
+
+        <div class="boleto boleto--gratis" <?php aos_animacion(); ?>>
+            <h4 class="boleto__logo">&#60;DevWebCamp /></h4>
+            <p class="boleto__plan">Gratis</p>
+            <p class="boleto__precio">$0</p>
+        </div>
+    </div>
+
+    <div class="boleto__enlace-contenedor">
+        <a href="/paquetes" class="boleto__enlace">Ver Paquetes</a>
+    </div>
+
+</section>
